@@ -1,2 +1,10 @@
-# Connect4
-connect 4 with a minmax ai
+# Connect 4
+
+<h3>Introduction</h4>
+Connect 4 is a simple to play game which involes placing markers along the board to try and achieve four-in-a-row. The Connect 4 gameboard is 7x6, 7 columns and 6 rows. You can drop markers on a column if the column is not already filled with markers. To win, all you need to do is get at least four markers in a row, either vertically, horizontally, or diagonally. If no players get four in a row by the end of the game, it is considered a tie game.
+<br>
+<h3>AI</h3>
+An Connect 4 AI is relatively easy to make. Connect 4 is a solved game and it has been proven that if a perfect game is played, the first player will always win. However, since a perfect AI is quite complicated to make and requires alot of computational power, I wrote a less complicated algorithm that calculated turns up to three moves ahead. 
+<br>
+<br>
+To start, each time a player moves on the board, if the move is valid, the game will record which move they placed. For example. if a player 1 decides to move in column 3, player 2 in column 2, and player 1, in column, 3, the game will generate the notation 212. The AI analyzes each move by taking in a notation as a parameter and turning it into a board object by rendering each piece into the board. It then calculates the possibilities for each move up to three turns ahead (343 moves). The algorithm will start at one turn ahead, if there is an immediate win the next turn, it will return that as the chosen move immediately, since there can't be a loss one move ahead (since it's the AI's turn not the players), the AI will skill analyzing for losses and move to two turns ahead. If the algorithm sees that it will lose in two turns, a preventable loss, it will assign it a score value of -2, meaning that it will lose in two turns. Moving along to three turns ahead, the AI will return a score of 1 if it can win in three turns. The way the code is written makes it easily scaleable for more than three turns. Finally, in the end, the algorithm will find the highest scored value and use that as its move. If all of the scores are 0, meaning there are no favorable or unfavorable outcomes in 1-3 turns, it will randomly select a valid move. If all outcomes are -2 (the AI will lose no matter what), it will also randomly choose a valid move.  
